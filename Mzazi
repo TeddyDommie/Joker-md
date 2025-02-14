@@ -1,1 +1,25 @@
 https://github.com/TeddyDommie/Skipper-Md.git
+
+cd whatsapp-web.js
+
+npm install
+
+const { Client, LocalAuth } = require('whatsapp-web.js');
+
+const client = new Client({
+    authStrategy: new LocalAuth()
+});
+
+client.on('ready', () => {
+    console.log('Client is ready!');
+});
+
+client.on('message', async (msg) => {
+    if (msg.body === '!ping') {
+        await msg.reply('pong');
+    }
+});
+
+client.initialize();
+
+node bot.js
